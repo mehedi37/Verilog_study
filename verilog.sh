@@ -22,8 +22,8 @@ fi
 
 # Run iverilog and vvp
 iverilog_files=(*.v)
-iverilog -o out "${iverilog_files[@]}"
-vvp out
+iverilog -o output.out "${iverilog_files[@]}"
+vvp output.out
 
 # If a dump file was specified, run gtkwave
 if [[ -n $dump_file_name ]]; then
