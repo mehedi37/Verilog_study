@@ -18,9 +18,9 @@ module comparator_tb;
     // otherwise they will execute at the same time
 
     #20 x1 = 0; y1 = 1;
-    #40 x1 = 1; y1 = 0;
-    #60 x1 = 1; y1 = 1;
-    #100;
+    #20 x1 = 1; y1 = 0;
+    #20 x1 = 1; y1 = 1;
+    #20;
   end
 
   initial begin
