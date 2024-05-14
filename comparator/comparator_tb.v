@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 module comparator_tb;
   // inputs
-  reg x1, y1;
+  reg x1, y1;   // reg = input variable
 
   // outputs
-  wire z1;
+  wire z1;    // wire = output variable
   // instantiate the Unit Under Test (uut)
   comparator uut(.x(x1), .y(y1), .z(z1));
   initial begin
@@ -14,11 +14,13 @@ module comparator_tb;
     x1 = 0;
     y1 = 0;
 
-    #20 x1 = 1;
-    #20 y1 = 1;
-    #20 y1 = 0;
-    #20 x1 = 1;
-    #40;
+    // this time gap is same for each execution
+    // otherwise they will execute at the same time
+
+    #20 x1 = 0; y1 = 1;
+    #40 x1 = 1; y1 = 0;
+    #60 x1 = 1; y1 = 1;
+    #100;
   end
 
   initial begin
