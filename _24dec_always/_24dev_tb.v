@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module _24dec_tb;
   reg [1:0] a1;
   reg e1;
@@ -12,9 +13,9 @@ module _24dec_tb;
   initial begin
     $dumpfile("_24dec_tb.vcd");
     $dumpvars(0, _24dec_tb);
-    a1 = 2'b00; e1 = 1;
+    a1 = 2'b00; e1 = 0;
 
-    #20 a1 = 2'b00; e1 = 1'b0;
+    // #20 a1 = 2'b00; e1 = 1'b0;
     #20 a1 = 2'b00; e1 = 1'b1;
     #20 a1 = 2'b01; e1 = 1'b1;
     #20 a1 = 2'b10; e1 = 1'b1;
