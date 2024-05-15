@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module _14mux_tb;
   reg [1:0] s1;
   reg i1;

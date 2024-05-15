@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module _42penc_tb;
 
   reg [3:0] y1;

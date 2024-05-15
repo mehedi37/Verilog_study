@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module d24_tb;
 
     reg [1:0] a1;
