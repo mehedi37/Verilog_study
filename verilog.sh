@@ -13,10 +13,14 @@ select dir in "${dirs[@]}"; do
   fi
 done
 
-# Ask if the project has a dump file
-read -p "Does the project have a dump file? (y/n) " has_dump_file
-dump_file_name=""
-if [[ $has_dump_file == "y" ]]; then
+# Try to find a file that matches the pattern *_tb.v
+testbench_file=$(ls | grep -m 1 '_tb.v$')
+
+# If a testbench file was found, extract the dump file name from it
+if [[ -n $testbench_file ]]; then
+  dump_file_name=$(grep -o '$dumpfile(".*\.vcd")' "$testbench_file" | cut -d'"' -f2 | sed 's/.vcd//')
+else
+  # If no testbench file was found, ask the user for the dump file name
   read -p "Enter the dump file name: " dump_file_name
 fi
 
@@ -25,7 +29,7 @@ iverilog_files=(*.v)
 iverilog -o output.out "${iverilog_files[@]}"
 vvp output.out
 
-# If a dump file was specified, run gtkwave
+# If a dump file name was specified, run gtkwave
 if [[ -n $dump_file_name ]]; then
   gtkwave "$dump_file_name.vcd"
 fi
