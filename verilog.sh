@@ -16,7 +16,7 @@ done
 # Try to find a file that matches the pattern *_tb.v
 testbench_file=$(ls | grep -m 1 '_tb.v$')
 
-# If a testbench file was found, extract the dump file name from it
+# If a testbench file was found, extract the dump file name from it using Regex
 if [[ -n $testbench_file ]]; then
   dump_file_name=$(grep -o '$dumpfile(".*\.vcd")' "$testbench_file" | cut -d'"' -f2 | sed 's/.vcd//')
 else
