@@ -13,6 +13,9 @@ select dir in "${dirs[@]}"; do
   fi
 done
 
+# Delete all .vcd and .out files in the selected directory
+rm -f *.vcd *.out
+
 # Try to find a file that matches the pattern *_tb.v
 testbench_file=$(ls | grep -m 1 '_tb.v$')
 
