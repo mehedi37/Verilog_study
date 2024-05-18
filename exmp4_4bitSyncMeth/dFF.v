@@ -1,5 +1,5 @@
 module dff(
-  input wire clk, set,
+  input wire clk, set, en,
   input wire [3:0] i,
   output wire [3:0] o
 );
@@ -9,7 +9,7 @@ module dff(
   begin
     if (set)
       o_reg <= 4'b1111;
-    else
+    else if (en)
       o_reg <= o_next;
   end
   assign o_next = i;

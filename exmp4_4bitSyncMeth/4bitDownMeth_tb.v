@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 module _4bitDownMeth_tb;
-reg clk, set;
+reg clk, set, en;
 wire [3:0] o;
 
 _4bitDownMeth uut(
-  .clk(clk), .set(set),
+  .clk(clk), .set(set), .en(en),
   .o(o)
 );
 
@@ -19,15 +19,17 @@ end
 
     clk <= 0;
     set <= 1;
+    en <= 0;
     #10;
 
+    en <= 1;
     set <= 0;
     #150;
     $finish;
   end
 
   initial begin
-    $monitor($time, " clk=%b, set=%b, o=%b", clk, set, o);
+    $monitor($time, " clk=%b, set=%b, en=%b, o=%b", clk, set, en, o);
   end
 
 endmodule

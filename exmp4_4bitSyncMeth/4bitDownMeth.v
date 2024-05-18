@@ -1,11 +1,11 @@
 module _4bitDownMeth(
-  input wire clk, set, // wire = physical connection, reg = memory element
+  input wire clk, set, en, // wire = physical connection, reg = memory element
   output wire [3:0] o
 );
   wire [3:0] i_temp, o_temp;
 
   dff uut_dff(
-    .clk(clk), .set(set),
+    .clk(clk), .set(set), .en(en),
     .i(i_temp),
     .o(o_temp)
   );
